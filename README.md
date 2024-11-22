@@ -1,7 +1,5 @@
 # **Connect Four AI: A Reinforcement Learning Journey**
 
-![Connect Four AI Banner](https://user-images.githubusercontent.com/yourusername/banner-image.png)
-
 *An advanced Connect Four AI powered by reinforcement learning, inspired by the history and evolution of AI.*
 
 ---
