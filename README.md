@@ -198,13 +198,13 @@ To use the Connect Four AI, follow these steps:
 First, clone the GitHub repository to your local machine:
 
 ```bash
-git clone https://github.com/yourusername/connect-four-ai.git
+git clone https://github.com/Heps-akint/Connect4_RLproject.git
 ```
 
 ### **Navigate to the Project Directory**
 
 ```bash
-cd connect-four-ai
+cd Connect4_RLproject
 ```
 
 ### **Run the Jupyter Notebook**
@@ -219,7 +219,7 @@ The entire codebase, including training and gameplay, is contained within a sing
 
 2. **Open the Notebook**:
 
-   In the Jupyter interface, open the `connect_four_ai.ipynb` notebook.
+   In the Jupyter interface, open the `Connect4_RLproject.ipynb` notebook.
 
 3. **Run the Notebook Cells**:
 
@@ -249,7 +249,7 @@ pip install numpy torch matplotlib
 
 ### **GPU Acceleration**
 
-To leverage your **RTX 3060 Ti GPU** for accelerated training:
+To leverage your **GPU** for accelerated training:
 
 1. **Install PyTorch with CUDA Support**:
 
