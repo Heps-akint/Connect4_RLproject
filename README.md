@@ -19,6 +19,7 @@
 - [Implementation Details](#implementation-details)
   - [Technologies and Tools Used](#technologies-and-tools-used)
   - [Proficiencies Demonstrated](#proficiencies-demonstrated)
+- [Web-Based Frontend](#web-based-frontend)
 - [Usage](#usage)
 - [Conclusion and Future Work](#conclusion-and-future-work)
 - [References](#references)
@@ -189,6 +190,26 @@ The project incorporates advanced techniques to enhance the AI's performance:
 
 ---
 
+## **Web-Based Frontend**
+
+A responsive web-based front-end has been developed to provide an accessible interface for playing against the trained Connect4 AI model. The frontend includes:
+
+- Interactive game board with animations and visual feedback
+- Real-time gameplay against the neural network model
+- Status updates and game results display
+- Simple, intuitive controls for players of all skill levels
+
+![Connect4 AI Frontend](Screenshot%202025-04-06%20201240.png)
+
+The web application is built with:
+- **Backend**: Flask server that loads the trained PyTorch model and implements the game logic
+- **Frontend**: HTML, CSS, and JavaScript for the user interface
+- **Algorithm**: The same MCTS and neural network combination used in training
+
+This implementation ensures that the AI's performance in the web interface matches that observed during training in the Jupyter notebook.
+
+---
+
 ## **Usage**
 
 To use the Connect Four AI, follow these steps:
@@ -201,118 +222,40 @@ First, clone the GitHub repository to your local machine:
 git clone https://github.com/Heps-akint/Connect4_RLproject.git
 ```
 
-### **Navigate to the Project Directory**
+### **Setup Environment**
+
+Navigate to the project directory and install the required dependencies:
 
 ```bash
 cd Connect4_RLproject
+pip install -r requirements.txt
 ```
 
-### **Run the Jupyter Notebook**
+### **Training and Playing in Jupyter Notebook**
 
-The entire codebase, including training and gameplay, is contained within a single Jupyter Notebook.
-
-1. **Start Jupyter Notebook**:
-
-   ```bash
-   jupyter notebook
-   ```
-
-2. **Open the Notebook**:
-
-   In the Jupyter interface, open the `Connect4_RLproject.ipynb` notebook.
-
-3. **Run the Notebook Cells**:
-
-   - Execute each cell in the notebook sequentially.
-   - The notebook is structured to guide you through the entire process, including:
-     - **Understanding the AI Architecture**: Detailed explanations and code for the neural network.
-     - **Training the AI**: Code cells to initiate and monitor training through self-play.
-     - **Playing Against the AI**: Interactive cells that allow you to play Connect Four against the trained AI.
-
-### **Dependencies**
-
-All necessary dependencies are managed within the Jupyter Notebook. The notebook includes cells that check for required libraries and install them if they are not already present.
-
-Alternatively, ensure that you have the following packages installed before running the notebook:
-
-- **Python 3.x**
-- **Jupyter Notebook**
-- **NumPy**
-- **PyTorch**
-- **Matplotlib**
-
-You can install them using the following command:
+Open the Jupyter notebook to explore the implementation, train the model, or play against it:
 
 ```bash
-pip install numpy torch matplotlib
+jupyter notebook Connect4-AI.ipynb
 ```
 
-### **GPU Acceleration**
+### **Using the Web-Based Frontend**
 
-To leverage your **GPU** for accelerated training:
+To play against the trained AI model using the web interface:
 
-1. **Install PyTorch with CUDA Support**:
+1. Ensure you have the trained model file (`connect4_best_model.pth`) in the project directory
+2. Run the Flask application:
 
-   Visit the [PyTorch Get Started](https://pytorch.org/get-started/locally/) page and select the appropriate commands to install PyTorch with CUDA support for your system.
+```bash
+python app.py
+```
 
-   Example installation command:
+3. Open your web browser and navigate to:
+```
+http://127.0.0.1:5000
+```
 
-   ```bash
-   pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu117
-   ```
-
-2. **Verify CUDA Availability**:
-
-   In a Python shell or within the notebook, run:
-
-   ```python
-   import torch
-   print(torch.cuda.is_available())
-   ```
-
-   If this returns `True`, PyTorch can utilize your GPU.
-
-3. **Ensure GPU Usage in Notebook**:
-
-   The notebook is configured to automatically detect and use the GPU if available. No additional configuration is needed.
-
-### **Training the AI**
-
-- **Training from Scratch**:
-
-  - Run the training cells in the notebook.
-  - The AI will begin learning through self-play.
-  - Training parameters can be adjusted within the notebook for experimentation.
-
-- **Using Pre-Trained Weights**:
-
-  - If you prefer not to train the AI from scratch, you can load pre-trained weights provided in the repository.
-  - Instructions are included in the notebook on how to load these weights.
-
-### **Playing Against the AI**
-
-- **Interactive Gameplay**:
-
-  - After training (or loading pre-trained weights), run the gameplay cells to start a game.
-  - Input your moves as prompted, and the AI will respond in real-time.
-  - The notebook provides a visual representation of the game board after each move.
-
-### **Understanding the Code**
-
-- The notebook includes detailed explanations and comments.
-- Each section aligns with AI concepts discussed in the inspirational videos.
-- It's designed to be educational, helping you understand how each part of the code relates to the overall AI system.
-
-### **Customization**
-
-- **Experimentation**:
-
-  - Modify the notebook to try different neural network architectures or reinforcement learning techniques.
-  - Adjust hyperparameters such as learning rates, exploration factors, and network depths.
-
-- **Extensibility**:
-
-  - The modular structure makes it easy to extend the AI's capabilities or apply it to other games.
+4. Play against the AI by clicking on columns to drop your pieces!
 
 ---
 
