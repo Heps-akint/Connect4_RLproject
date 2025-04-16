@@ -65,7 +65,14 @@ h1 {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    transition: top 0.5s cubic-bezier(0.5, 0, 1, 1);
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    transform: translateY(-20px);
+    opacity: 0;
+}
+
+.piece.drop {
+    transform: translateY(0);
+    opacity: 1;
 }
 
 .player-piece {
@@ -146,6 +153,38 @@ h1 {
     border-bottom: 2px solid #3498db;
     padding-bottom: 10px;
     margin-top: 0;
+}
+
+/* Spinner overlay */
+.spinner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.spinner.hidden {
+    display: none;
+}
+
+.spinner::after {
+    content: "";
+    width: 50px;
+    height: 50px;
+    border: 5px solid #3498db;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
 }
 
 /* For mobile screens */

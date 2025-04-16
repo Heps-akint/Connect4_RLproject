@@ -225,6 +225,7 @@ def make_move():
     global game
     data = request.json
     col = data.get('col')
+    sims = int(data.get('sims', 800))  # AI difficulty: number of MCTS simulations
     
     # Check if the column is valid
     if col not in game.valid_moves():
@@ -245,7 +246,7 @@ def make_move():
     
     # Make the AI's move
     root = MCTSNode(game)
-    ai_move = mcts_search(root, net, num_simulations=800)
+    ai_move = mcts_search(root, net, num_simulations=sims)
     game.make_move(ai_move)
     
     # Check if the game is over after AI's move

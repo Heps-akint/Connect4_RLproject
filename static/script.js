@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const columnSelector = document.querySelector('.column-selector');
     const statusElement = document.getElementById('status');
     const resetButton = document.getElementById('reset-btn');
+    const spinner = document.getElementById('spinner');
+    const difficultySelect = document.getElementById('difficulty');
 
     const ROWS = 6;
     const COLS = 7;
@@ -53,13 +55,18 @@ document.addEventListener('DOMContentLoaded', () => {
         statusElement.textContent = "AI is thinking...";
         isPlayerTurn = false;
 
+        // Show spinner and disable input with chosen difficulty
+        const sims = parseInt(difficultySelect.value, 10);
+        spinner.classList.remove('hidden');
+        columnSelector.style.pointerEvents = 'none';
+
         // Send the move to the server
         fetch('/make_move', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ col: col })
+            body: JSON.stringify({ col: col, sims: sims })
         })
         .then(response => response.json())
         .then(data => {
@@ -95,6 +102,10 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Error:', error);
             statusElement.textContent = "An error occurred. Please try again.";
             isPlayerTurn = true;
+        })
+        .finally(() => {
+            spinner.classList.add('hidden');
+            columnSelector.style.pointerEvents = 'auto';
         });
     }
 
@@ -125,6 +136,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     piece.style.top = `${rect.top - boardRect.top + (rect.height - 60) / 2}px`;
                     
                     piecesContainer.appendChild(piece);
+                    // Animate piece drop
+                    setTimeout(() => piece.classList.add('drop'), 50);
                 }
             }
         }
