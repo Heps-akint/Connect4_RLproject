@@ -140,7 +140,7 @@ def backpropagate(path, value):
 def mcts_search(root, net, num_simulations=800):
     for _ in range(num_simulations):
         node = root
-        path = []
+        path = [node]
 
         # Selection
         while node.children:
@@ -181,11 +181,11 @@ def mcts_search(root, net, num_simulations=800):
                 child_node.prior = policy[idx]
                 node.children[idx] = child_node
             # Use the value estimate from the neural network
-            backpropagate(path + [node], value.item())
+            backpropagate(path, value.item())
         else:
             # Terminal node
             value = winner if winner != 0 else 0
-            backpropagate(path + [node], value)
+            backpropagate(path, value)
     # Choose the move with the most visits
     best_move = max(root.children.items(), key=lambda item: item[1].visits)[0]
     return best_move
